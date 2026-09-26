@@ -1,7 +1,8 @@
-import type { Chord, Quality } from './types';
+
+import type { Chord, Root, Quality } from './types';
 
 
-export const roots = ['C', 'D', 'E', 'F', 'G', 'A', 'B'];
+export const roots: Root[] = ['C', 'D', 'E', 'F', 'G', 'A', 'B'];
 export const qualities: Quality[] = ['major', 'minor', 'augmented', 'seventh'];
 export const qualityLabels: Record<Quality, string> = { major: 'Major', minor: 'Minor', augmented: 'Aug', seventh: '7th' };
 

@@ -1,10 +1,10 @@
-import type { collection } from './types';
+import type { Collection } from './types';
 
 export const dummyCollection: Collection[] = [
   {
     id: 'a1b2c3',
     name: 'Song idea 1',
-    savedChords: [
+    chordRefs: [
       { root: 'G', quality: 'major', positionIndex: 0 },
       { root: 'C', quality: 'major', positionIndex: 0 },
       { root: 'G', quality: 'major', positionIndex: 1 },
@@ -14,7 +14,7 @@ export const dummyCollection: Collection[] = [
   {
     id: 'd4e5f6',
     name: 'Warm-ups',
-    savedChords: [
+    chordRefs: [
       { root: 'E', quality: 'major', positionIndex: 0 },
       { root: 'F', quality: 'major', positionIndex: 2 },
     ],
@@ -22,6 +22,6 @@ export const dummyCollection: Collection[] = [
   {
     id: 'g7h8i9',
     name: 'Empty one',
-    savedChords: [],
+    chordRefs: [],
   },
 ]

@@ -5,7 +5,7 @@ interface SaveMenuProps {
 	chordRef: ChordRef; 
 	collections: Collection[];
 	handleNewCollection: () => void;
-	handleAddToCollection: () => void;
+	handleAddToCollection: (collectionId: string, chordRed: ChordRef) => void;
 }
 
 function SaveMenu({ chordRef, collections, handleNewCollection, handleAddToCollection }: SaveMenuProps) {
@@ -14,7 +14,7 @@ function SaveMenu({ chordRef, collections, handleNewCollection, handleAddToColle
 
 	return (
 		<>
-			<button onClick={(prev) => setSaveMenuOpen(prev => !prev)}>Save</button>
+			<button onClick={() => setSaveMenuOpen(prev => !prev)}>Save</button>
 			{
 				saveMenuOpen && (
 					<>

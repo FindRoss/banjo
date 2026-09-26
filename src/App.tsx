@@ -6,7 +6,7 @@ import Nav from './components/Nav'
 import FretboardDiagram from './components/FretboardDiagram'
 import Collections from './components/Collections'
 import SaveMenu from './components/SaveMenu'
-import { dummyCollection } from './data/dummyCollection'
+// import { dummyCollection } from './data/dummyCollection'
 
 function App() {
   let [displayMode, setDisplayMode] = useState<DisplayMode>(
@@ -65,7 +65,7 @@ function App() {
     localStorage.setItem('displayMode', mode);
   }
 
-  function handleButtonClick(note: Root) {
+  function handleNoteClick(note: Root) {
     setDisplayRoot(note);
     localStorage.setItem('root', note);
   }  
@@ -107,14 +107,13 @@ function App() {
         </select> 
       </div>
 
-
       {view === 'chords' ? (
         
         <div>
           {roots.map(note => (
             
               <button 
-                onClick={() => handleButtonClick(note)} 
+                onClick={() => handleNoteClick(note)} 
                 key={note}
                 className={(note === displayRoot) ? 'active' : ''}
                 >
@@ -162,11 +161,6 @@ function App() {
           handleRemoveChord={handleRemoveChord} 
         />
       )}
-
-      
-     
-      
-      
     </>
   )
 }
