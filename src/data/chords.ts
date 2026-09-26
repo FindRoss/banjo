@@ -13,8 +13,8 @@ export const chords: Record<string, Chord> = {
     notes: 'G, B, D', 
     positions: [
         { baseFret: 1, frets: ['o', 'o', 'o', 'o'], fingers: [0, 0, 0, 0] },
-        { baseFret: 3, frets: [5, 4, 3, 5] }, 
-        { baseFret: 7, frets: [9, 7, 8, 9] }
+        { baseFret: 3, frets: [5, 4, 3, 5], fingers: [3, 2, 1, 4 ] }, 
+        { baseFret: 7, frets: [9, 7, 8, 9], fingers: [3, 1, 1, 4] }
     ],
   },
   Gm: {
@@ -22,7 +22,10 @@ export const chords: Record<string, Chord> = {
     root: 'G',
     quality: 'minor',
     notes: 'G, Bb, D', 
-    positions: [{ baseFret: 1, frets: ['o', 3, 3, 'o'] }],
+    positions: [
+      { baseFret: 3, frets: [5, 3, 3, 5], fingers: [3, 1, 1, 4] },
+      { baseFret: 7, frets: [8, 7, 8, 8], fingers: [2, 1, 3, 4] }
+    ],
   },
   C: {
     name: 'C',
@@ -47,7 +50,12 @@ export const chords: Record<string, Chord> = {
     root: 'C',
     quality: 'seventh',
     notes: 'todo', 
-    positions: [{ baseFret: 1, frets: [2, 3, 1, 2] }],
+    positions: [
+      { baseFret: 1, frets: [2, 3, 1, 2], fingers: [3, 4, 1, 2] },
+      { baseFret: 5, frets: [5, 5, 5, 8], fingers: [1, 1, 1, 4] },
+      { baseFret: 5, frets: [8, 5, 5, 5], fingers: [3, 1, 1, 1] },
+      { baseFret: 8, frets: [8, 9, 8, 10], fingers: [1, 2, 1, 4] }
+    ],
   },
   Caug: {
     name: 'Caug',

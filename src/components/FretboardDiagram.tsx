@@ -15,7 +15,7 @@ const stringGap = width / 3;
 
 function FretboardDiagram({ position, displayMode }: FretboardDiagramProps) {
   return (
-    <svg viewBox="0 0 200 240" width={220} height={264}>
+    <svg viewBox="0 0 240 240" width={264} height={264}>
       <line
         x1={left}
         x2={left + width}
@@ -26,7 +26,7 @@ function FretboardDiagram({ position, displayMode }: FretboardDiagramProps) {
       />
 
       {position.baseFret > 1 && (
-        <text x={left + width + 6} y={top + 20} fontSize={20} fontWeight="bold">
+        <text x={left + width + 14} y={top + 20} fontSize={20} fontWeight="bold">
           {position.baseFret}fr
         </text>
       )}

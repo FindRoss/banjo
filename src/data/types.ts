@@ -2,8 +2,9 @@ export type DisplayMode = 'none' | 'notes' | 'fingers';
 export type Quality = 'major' | 'minor' | 'augmented' | 'seventh'; 
 export type Root = 'C' | 'D' | 'E' | 'F' | 'G' | 'A' | 'B'; 
 
-
 export type FretValue = number | 'o' | 'x'; 
+
+export type Views = 'chords' | 'collections';
 
 export interface ChordPosition {
     baseFret: number;
@@ -28,5 +29,5 @@ export interface ChordRef {
 export interface Collection {
     id: string; 
     name: string;
-    savedChords: ChordRef[]
+    chordRefs: ChordRef[]
 }

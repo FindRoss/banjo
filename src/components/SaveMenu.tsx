@@ -2,13 +2,13 @@ import { useState } from 'react';
 import type { Collection, ChordRef } from '../data/types'
 
 interface SaveMenuProps { 
-	savedChord: ChordRef; 
+	chordRef: ChordRef; 
 	collections: Collection[];
 	handleNewCollection: () => void;
 	handleAddToCollection: () => void;
 }
 
-function SaveMenu({ savedChord, collections, handleNewCollection, handleAddToCollection }: SaveMenuProps) {
+function SaveMenu({ chordRef, collections, handleNewCollection, handleAddToCollection }: SaveMenuProps) {
 	const [saveMenuOpen, setSaveMenuOpen] = useState(false);
 
 
@@ -23,10 +23,10 @@ function SaveMenu({ savedChord, collections, handleNewCollection, handleAddToCol
 							<div key={collection.id}>
 								{collection.name} 
 								<button 
-										onClick={() =>handleAddToCollection(collection.id, savedChord)}
+									onClick={() => handleAddToCollection(collection.id, chordRef)}
 								>
-										Add
-									</button> 
+									Add
+								</button> 
 							</div>
 						))}
 					</>
