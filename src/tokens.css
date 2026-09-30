@@ -1,0 +1,46 @@
+@import url('https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@400;500&family=Bricolage+Grotesque:opsz,wght@12..96,700&display=swap');
+
+:root {
+  --bg: #FAFAF7;
+  --surface: #FFFFFF;
+  --ink: #121212;
+  --muted: #76746E;
+  --line: #E4E2DC;
+  --line-soft: #F0EEE9;
+  --fret: #C9C6BF;
+  --chip: #F1F0EB;
+  --seg-track: #EFEEE9;
+  --tile: #F4F3EE;
+  --scrim: rgba(18, 18, 18, .28);
+
+  --font-ui: 'Geist', system-ui, sans-serif;
+  --font-mono: 'Geist Mono', ui-monospace, monospace;
+  --font-display: 'Bricolage Grotesque', 'Geist', sans-serif;
+
+  --r-seg: 8px;
+  --r-track: 10px;
+  --r-btn: 12px;
+  --r-card: 16px;
+  --r-card-lg: 18px;
+  --r-modal: 20px;
+  --r-sheet: 24px;
+
+  --shadow-seg: 0 1px 2px rgba(0,0,0,.1), 0 0 0 0.5px rgba(0,0,0,.05);
+  --shadow-modal: 0 24px 48px -12px rgba(0,0,0,.25);
+
+  --bp-desktop: 768px;
+}
+
+body { margin: 0; background: var(--bg); color: var(--ink); font-family: var(--font-ui); -webkit-font-smoothing: antialiased; }
+
+.phone-only { display: block; }
+.phone-only-inline { display: inline; }
+.desktop-only,
+.desktop-only-inline { display: none; }
+
+@media (min-width: 768px) {
+  .phone-only,
+  .phone-only-inline { display: none; }
+  .desktop-only { display: flex; }
+  .desktop-only-inline { display: inline; }
+}

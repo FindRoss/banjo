@@ -1,0 +1,27 @@
+.segmented {
+  display: flex;
+  background: var(--seg-track);
+  border-radius: var(--r-track);
+  padding: 3px;
+  gap: 2px;
+}
+
+.segmented-item {
+  flex: 1;
+  height: var(--seg-h, 32px);
+  padding: 0 var(--seg-px, 0);
+  border: none;
+  border-radius: var(--r-seg);
+  background: transparent;
+  color: var(--muted);
+  font-family: var(--font-ui);
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.segmented-item.active {
+  background: var(--surface);
+  color: var(--ink);
+  box-shadow: var(--shadow-seg);
+}
