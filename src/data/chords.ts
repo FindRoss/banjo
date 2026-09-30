@@ -5,6 +5,7 @@ import type { Chord, Root, Quality } from './types';
 export const roots: Root[] = ['C', 'D', 'E', 'F', 'G', 'A', 'B'];
 export const qualities: Quality[] = ['major', 'minor', 'augmented', 'seventh', 'sixth'];
 export const qualityLabels: Record<Quality, string> = { major: 'Major', minor: 'Minor', augmented: 'Aug', seventh: '7th', sixth: '6th' };
+export const qualityFullNames: Record<Quality, string> = { major: 'Major', minor: 'Minor', augmented: 'Augmented', seventh: 'Seventh', sixth: 'Sixth' };
 
 export const chords: Record<string, Chord> = {
   G: {
@@ -90,7 +91,7 @@ export const chords: Record<string, Chord> = {
     positions: [
       { baseFret: 1, frets: [2, 1, 1, 2], fingers: [2, 1, 1, 3] },
       { baseFret: 5, frets: [6, 5, 5, 6], fingers: [2, 1, 1, 3] },
-      { baseFret: 5, frets: [10, 9, 9, 10], fingers: [2, 1, 1, 3] },
+      { baseFret: 9, frets: [10, 9, 9, 10], fingers: [2, 1, 1, 3] },
     ],
   },
   C6: {
