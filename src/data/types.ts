@@ -1,5 +1,5 @@
 export type DisplayMode = 'none' | 'notes' | 'fingers';
-export type Quality = 'major' | 'minor' | 'augmented' | 'seventh'; 
+export type Quality = 'major' | 'minor' | 'augmented' | 'seventh' | 'sixth'; 
 export type Root = 'C' | 'D' | 'E' | 'F' | 'G' | 'A' | 'B'; 
 
 export type FretValue = number | 'o' | 'x'; 
