@@ -69,9 +69,9 @@
 .quality-pill {
   flex: 1;
   padding: 12px 14px;
-  border: 1px solid var(--line);
+  border: none;
   border-radius: 21px;
-  background: transparent;
+  background: var(--chip);
   color: var(--ink);
   font-family: var(--font-ui);
   font-size: 15px;
@@ -81,7 +81,6 @@
 
 .quality-pill.active {
   background: var(--ink);
-  border-color: var(--ink);
   color: var(--surface);
 }
 
