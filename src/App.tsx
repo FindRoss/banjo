@@ -131,7 +131,10 @@ function App() {
       />
 
       <div className="app-body">
-        <h1 className="page-title phone-only">{view === 'chords' ? 'Banjo Chords' : 'Collections'}</h1>
+        <h1 className="page-title phone-only">
+          <img src="/favicon.svg" alt="" className="logo-mark" />
+          {view === 'chords' ? 'Banjo Chords' : 'Collections'}
+        </h1>
 
         {view === 'chords' ? (
           <>

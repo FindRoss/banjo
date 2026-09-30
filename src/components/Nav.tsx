@@ -26,7 +26,10 @@ function Nav({ view, setView, displayMode, onDisplayModeChange }: NavProps) {
 			{/* Desktop top bar */}
 			<header className="top-bar">
 				<div className="top-bar-left">
-					<h1 className="top-bar-title">Banjo Chords</h1>
+					<h1 className="top-bar-title">
+						<img src="/favicon.svg" alt="" className="logo-mark" />
+						Banjo Chords
+					</h1>
 					<SegmentedControl className="seg-view" options={viewOptions} value={view} onChange={setView} />
 				</div>
 				<div className="top-bar-right">

@@ -14,10 +14,19 @@
 .page-title {
   margin: 0;
   padding: 10px 20px 4px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
   font-family: var(--font-display);
   font-size: 30px;
   font-weight: 700;
   letter-spacing: -0.03em;
+}
+
+.page-title .logo-mark {
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
 }
 
 /* --- Side panel (root + quality) --- */
