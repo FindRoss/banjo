@@ -1,6 +1,6 @@
 import './App.css'
-import type { DisplayMode, Quality, Root, ChordRef, Collection, Views } from './data/types';
-import { chords, roots, qualities, qualityLabels, qualityFullNames } from './data/chords'
+import type { Chord, DisplayMode, Quality, Root, ChordRef, Collection, Views } from './data/types';
+import { roots, qualities, qualityLabels, qualityFullNames } from './data/labels'
 import { useState, useEffect } from 'react'
 import Nav from './components/Nav'
 import FretboardDiagram from './components/FretboardDiagram'
@@ -40,9 +40,33 @@ function App() {
   );
   const [savingPositionIndex, setSavingPositionIndex] = useState<number | null>(null);
 
-  const chord = Object.values(chords).find(
+  const [chords, setChords] = useState<Chord[]>([]); 
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
+
+  const chord = chords.find(
     c => c.root === displayRoot && c.quality === displayQuality
   );
+
+  useEffect(() => {
+    const fetchChords = async () => {
+      try {
+        const response = await fetch(`${import.meta.env.VITE_API_URL}/chords`)
+
+        if (!response.ok) throw new Error(`HTTP ${response.status}`);
+
+        const data = await response.json();      
+        setChords(data);
+
+      } catch {
+        setError('Could not load chords');
+      } finally {
+        setLoading(false);
+      }
+    }
+
+    fetchChords(); 
+  }, []);
 
   useEffect(() => {
     localStorage.setItem('collections', JSON.stringify(collections));
@@ -120,6 +144,9 @@ function App() {
     chord && savingPositionIndex !== null
       ? { root: chord.root, quality: chord.quality, positionIndex: savingPositionIndex }
       : null;
+
+  if (loading) return <p className="empty-state">Loading chords…</p>;
+  if (error) return <p className="empty-state">{error}</p>;
 
   return (
     <div className="app">
@@ -225,6 +252,7 @@ function App() {
           </>
         ) : (
           <Collections
+            chords={chords}
             collections={collections}
             handleDeleteCollection={handleDeleteCollection}
             handleRemoveChord={handleRemoveChord}

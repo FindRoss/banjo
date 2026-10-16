@@ -1,15 +1,15 @@
-import type { Collection } from '../data/types';
-import { chords } from '../data/chords';
+import type { Chord, Collection } from '../data/types';
 import FretboardDiagram from '../components/FretboardDiagram';
 import './Collections.css';
 
 interface CollectionsProps {
+	chords: Chord[];
 	collections: Collection[];
 	handleRemoveChord: (collectionId: string, chordIndex: number) => void;
 	handleDeleteCollection: (collectionId: string) => void;
 }
 
-function Collections({ collections, handleRemoveChord, handleDeleteCollection }: CollectionsProps) {
+function Collections({ chords, collections, handleRemoveChord, handleDeleteCollection }: CollectionsProps) {
 	return (
 		<div className="collections-view">
 			<div className="collections-header desktop-only">
@@ -36,7 +36,7 @@ function Collections({ collections, handleRemoveChord, handleDeleteCollection }:
 					) : (
 						<div className="tile-row">
 							{col.chordRefs.map((ref, index) => {
-								const chord = Object.values(chords).find(
+								const chord = chords.find(
 									c => c.root === ref.root && c.quality === ref.quality
 								);
 								if (!chord) return null;

@@ -7,12 +7,14 @@ export type FretValue = number | 'o' | 'x';
 export type Views = 'chords' | 'collections';
 
 export interface ChordPosition {
+    id: number;
     baseFret: number;
     frets: FretValue[];
-    fingers?: number[];
+    fingers?: number[] | null;
 }
 
 export interface Chord {
+    id: number;
     name: string; 
     root: Root;
     quality: Quality;
