@@ -9,3 +9,7 @@ export const credentialsSchema = z.object({
   email: z.email().toLowerCase(),
   password: z.string().min(8)
 });
+
+export const createCollectionSchema = z.object({
+  name: z.string().trim().min(1).max(60)
+});

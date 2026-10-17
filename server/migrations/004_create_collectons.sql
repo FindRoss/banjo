@@ -1,0 +1,6 @@
+CREATE TABLE collections (
+  id SERIAL PRIMARY KEY, 
+  user_id INTEGER NOT NULL REFERENCES users(id) ON DELETE CASCADE,
+  name TEXT NOT NULL, 
+  created_at TIMESTAMPTZ NOT NULL DEFAULT NOW() 
+); 
