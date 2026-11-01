@@ -6,6 +6,7 @@ import chordRouter from './routes/chords.js';
 import healthRouter from './routes/health.js';
 import authRouter from './routes/auth.js';
 import collectionsRouter from './routes/collections.js'; 
+import tuningsRouter from './routes/tunings.js';
 
 dotenv.config();
 
@@ -19,6 +20,7 @@ app.use('/health', healthRouter);
 app.use('/chords', chordRouter);
 app.use('/auth', authRouter);
 app.use('/collections', collectionsRouter);
+app.use('/tunings', tuningsRouter);
 
 app.listen(port, () => {
   console.log(`Server running on http://localhost:${port}. All good`);
