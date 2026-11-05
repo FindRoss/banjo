@@ -23,19 +23,6 @@ export const chords: Record<string, Chord> = {
       { baseFret: 7, frets: [8, 7, 8, 8], fingers: [2, 1, 3, 4] }
     ],
   },
-  G7: {
-    name: 'G7',
-    root: 'G',
-    quality: 'seventh',
-    notes: 'G, B, D, F',
-    positions: [
-      { baseFret: 1, frets: ['o', 'o', 'o', 3], fingers: [0, 0, 0, 1] }, 
-      { baseFret: 1, frets: [3, 'o', 'o', 'o'], fingers: [1, 0, 0, 0] }, 
-      { baseFret: 3, frets: [3, 3, 4, 5], fingers: [1, 1, 2, 3] }, 
-      { baseFret: 4, frets: [5, 4, 6, 5], fingers: [2, 1, 4, 3] }, 
-
-    ],
-  },
   Gaug: {
     name: 'Gaug',
     root: 'G',
