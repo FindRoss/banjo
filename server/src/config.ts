@@ -4,3 +4,6 @@ const secret = process.env.JWT_SECRET;
 if (!secret) throw new Error('JWT_SECRET is not set');
 
 export const JWT_SECRET: string = secret;
+
+export const PORT = Number(process.env.PORT) || 3001; 
+export const CORS_ORIGIN = process.env.CORS_ORIGIN ?? 'http://localhost:5173'; 
