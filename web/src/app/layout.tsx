@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono, Bricolage_Grotesque } from "next/font/google";
+import { SITE_URL } from "@/lib/site";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -19,7 +20,11 @@ const bricolage = Bricolage_Grotesque({
 });
 
 export const metadata: Metadata = {
-  title: "ChordsCloud",
+  metadataBase: new URL(SITE_URL),
+  title: {
+    default: "CloudChords",
+    template: "%s | CloudChords",
+  },
   description: "Banjo, guitar, and mandolin chord charts and fretboard diagrams.",
 };
 
