@@ -1,10 +1,9 @@
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
-import FretboardDiagram from '@/components/FretboardDiagram';
-import type { Chord, Quality } from '@/lib/types';
-import Link from 'next/link';
 import { capitalise, fullName } from '@/lib/names';
 import { getChord, getChords, getTuning, getTunings } from '@/lib/api';
+import Link from 'next/link';
+import ChordPositions from '@/components/ChordPositions';
 
 export const instant = false;
 
@@ -59,18 +58,34 @@ export default async function ChordPage({
 
   if (!tuning || !chord) notFound();
 
+    const notes = chord.notes
+    .split(',')
+    .map(note => note.trim())
+    .join(' · ');
+
   return (
-    <main style={{ padding: 40 }}>
-      <h1>{chord.name}</h1>
-      <p>{chord.notes}</p>
-      {chord.positions.map(position => (
-        <FretboardDiagram
-          key={position.id}
-          position={position}
-          openStrings={tuning.openStrings}
-          displayMode="notes"
-        />
-      ))}
+    <main className="page">
+      <Link className="back-link" href={`/${instrument}/${tuningSlug}`}>
+        ← All {instrument} chords
+      </Link>
+
+      <div className="chord-header">
+        <h1 className="chord-name">
+          {chord.name}
+          <span className="sr-only">
+            {' '}
+            – {fullName(chord)} {instrument} chord in {tuning.name} tuning
+          </span>
+        </h1>
+        <div className="chord-meta">
+          <div className="chord-full-name">
+            {fullName(chord)} · {tuning.name}
+          </div>
+          <div className="chord-notes">{notes}</div>
+        </div>
+      </div>
+
+      <ChordPositions positions={chord.positions} openStrings={tuning.openStrings} />
     </main>
   );
 }

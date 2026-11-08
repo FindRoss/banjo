@@ -1,0 +1,218 @@
+/* Header */
+.site-header {
+  display: flex;
+  align-items: center;
+  height: 60px;
+  padding: 0 20px;
+  border-bottom: 1px solid var(--line);
+}
+
+.site-brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--ink);
+  text-decoration: none;
+  font-family: var(--font-display);
+  font-size: 22px;
+  font-weight: 700;
+  letter-spacing: -0.03em;
+}
+
+.site-brand img {
+  border-radius: 7px;
+}
+
+/* Page */
+.page {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 16px 20px 56px;
+}
+
+.back-link {
+  display: inline-block;
+  font-family: var(--font-ui);
+  font-size: 14px;
+  color: var(--muted);
+  text-decoration: none;
+}
+
+.back-link:hover {
+  color: var(--ink);
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* Chord header */
+.chord-header {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 22px 0 16px;
+}
+
+.chord-name {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: 68px;
+  font-weight: 700;
+  letter-spacing: -0.05em;
+  line-height: 0.9;
+}
+
+.chord-meta {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 4px;
+  text-align: right;
+}
+
+.chord-full-name {
+  font-family: var(--font-ui);
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--muted);
+}
+
+.chord-notes {
+  font-family: var(--font-mono);
+  font-size: 13px;
+}
+
+/* Display mode control */
+.segmented {
+  display: flex;
+  background: var(--seg-track);
+  border-radius: var(--r-track);
+  padding: 3px;
+  gap: 2px;
+}
+
+.segmented-item {
+  flex: 1;
+  height: 32px;
+  border: none;
+  border-radius: var(--r-seg);
+  background: transparent;
+  color: var(--muted);
+  font-family: var(--font-ui);
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.segmented-item.active {
+  background: var(--surface);
+  color: var(--ink);
+  box-shadow: var(--shadow-seg);
+}
+
+/* Positions */
+.positions-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+  padding-top: 16px;
+}
+
+.position-card {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--r-card);
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+}
+
+.position-card svg {
+  width: 138px;
+  height: auto;
+}
+
+.card-footer {
+  width: 100%;
+}
+
+.card-title {
+  font-family: var(--font-ui);
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.card-sub {
+  font-family: var(--font-ui);
+  font-size: 12px;
+  color: var(--muted);
+}
+
+@media (min-width: 768px) {
+  .site-header {
+    height: 68px;
+    padding: 0 28px;
+  }
+
+  .page {
+    padding: 24px 40px 72px;
+  }
+
+  .chord-header {
+    align-items: baseline;
+    justify-content: flex-start;
+    gap: 20px;
+    padding: 28px 0 24px;
+  }
+
+  .chord-name {
+    font-size: 88px;
+  }
+
+  .chord-meta {
+    flex-direction: row;
+    align-items: baseline;
+    gap: 20px;
+    text-align: left;
+  }
+
+  .chord-full-name {
+    font-size: 17px;
+  }
+
+  .chord-notes {
+    font-size: 14px;
+  }
+
+  .display-row {
+    max-width: 300px;
+  }
+
+  .positions-grid {
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 16px;
+    padding-top: 24px;
+  }
+
+  .position-card {
+    border-radius: var(--r-card-lg);
+    padding: 18px;
+    gap: 10px;
+  }
+
+  .position-card svg {
+    width: 190px;
+  }
+}
