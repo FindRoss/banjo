@@ -40,23 +40,29 @@ export default async function TuningPage({ params }: { params: Params }) {
 
   const chords = await getChords(instrument, tuningSlug);
 
-  return (
-    <main style={{ padding: 40 }}>
-      <h1>
+    return (
+    <main className="page">
+      <h1 className="page-title">
         {capitalise(instrument)} chords in {tuning.name} tuning
       </h1>
+      <p className="page-intro">
+        Pick a chord to see every fingering, with note names and finger positions.
+      </p>
 
       {ROOTS.map(root => {
-        const group = chords.filter(chord => chord.root === root);
-        if (group.length === 0) return null;
+        const chordsForRoot = chords.filter(chord => chord.root === root);
+        if (chordsForRoot.length === 0) return null;
 
         return (
-          <section key={root}>
-            <h2>{root}</h2>
-            <ul>
-              {group.map(chord => (
-                <li key={chord.id}>
-                  <Link href={`/${instrument}/${tuningSlug}/${chord.slug}`}>
+          <section className="root-section" key={root}>
+            <h2 className="root-heading">{root}</h2>
+            <ul className="chip-list">
+              {chordsForRoot.map(chord => (
+                <li key={chord.slug}>
+                  <Link
+                    className="chord-chip"
+                    href={`/${instrument}/${tuningSlug}/${chord.slug}`}
+                  >
                     {fullName(chord)}
                   </Link>
                 </li>
