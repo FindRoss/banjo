@@ -4,6 +4,7 @@ import { useState } from 'react';
 import FretboardDiagram from '@/components/FretboardDiagram';
 import SegmentedControl from '@/components/SegmentedControl';
 import type { ChordPosition, DisplayMode } from '@/lib/types';
+import SaveButton from '@/components/SaveButton';
 
 const options: { value: DisplayMode; label: string }[] = [
   { value: 'none', label: 'Off' },
@@ -39,6 +40,7 @@ export default function ChordPositions({ positions, openStrings }: ChordPosition
                 {position.baseFret === 1 ? 'Open' : `Fret ${position.baseFret}`}
               </div>
             </div>
+            <SaveButton positionId={position.id} />
           </div>
         ))}
       </div>
