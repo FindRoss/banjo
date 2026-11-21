@@ -27,7 +27,7 @@ export async function getCollectionsAction(): Promise<CollectionsResult> {
   return { status: 'ok', collections: result.data };
 }
 
-export async function saveToCollectonAction(
+export async function saveToCollectionAction(
   collectionId: number,
   positionId: number, 
 ): Promise<ActionResult> {
