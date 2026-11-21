@@ -2,7 +2,7 @@
 
 import { redirect } from 'next/navigation';
 import { login, register } from '@/lib/auth-api';
-import { setSession } from '@/lib/session';
+import { clearSession, setSession } from '@/lib/session';
 import type { FormState } from '@/components/AuthForm';
 
 function readCredentials(formData: FormData) {
@@ -33,5 +33,10 @@ export async function registerAction(_prev: FormState, formData: FormData): Prom
   if (!result.ok) return { error: result.error };
   
   await setSession(result.data.token); 
+  redirect('/');
+}
+
+export async function logoutAction() {
+  await clearSession();
   redirect('/');
 }

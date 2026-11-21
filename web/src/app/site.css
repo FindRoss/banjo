@@ -354,3 +354,31 @@
   margin-top: 24px;
   color: var(--muted);
 }
+
+.auth-nav {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 14px;
+}
+
+.auth-nav a,
+.auth-nav button {
+  color: var(--ink);
+  font: inherit;
+  background: none;
+  border: 0;
+  padding: 0;
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+.auth-nav-email {
+  color: var(--muted);
+  display: none;
+}
+
+@media (min-width: 768px) {
+  .auth-nav-email { display: inline; }
+}

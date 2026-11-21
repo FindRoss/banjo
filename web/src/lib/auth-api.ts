@@ -32,3 +32,16 @@ export function register(email: string, password: string) {
     password,
   });
 }
+
+export async function getMe(token: string) {
+  if (!API_URL) throw new Error('API_URL is not set');
+
+  const response = await fetch(`${API_URL}/auth/me`, {
+    headers: { Authorization: `Bearer ${token}` },
+    cache: 'no-store',
+  });
+  if (!response.ok) return null;
+
+  const json = (await response.json()) as { user: { id: number; email: string } };
+  return json.user;
+}
