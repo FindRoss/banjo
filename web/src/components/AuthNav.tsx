@@ -17,6 +17,7 @@ export default async function AuthNav() {
 
   return (
     <nav className="auth-nav">
+      <Link href="/collections">Collections</Link>
       <span className="auth-nav-email">{user.email}</span>
       <form action={logoutAction}>
         <button type="submit">Log out</button>
