@@ -117,9 +117,14 @@ router.post('/:id/items', async (req, res) => {
   const result = await pool.query(`
     INSERT INTO collection_items (collection_id, position_id, sort_order)
       VALUES ($1, $2, COALESCE((SELECT MAX(sort_order) FROM collection_items WHERE collection_id = $1), 0) + 1)
+      ON CONFLICT (collection_id, position_id) DO NOTHING
       RETURNING id, position_id AS "positionId"
     `, [id, positionId]
   );
+
+  if (result.rows.length === 0) {
+    return res.status(409).json({ error: 'Already in this collection' });
+  }
 
   return res.status(201).json(result.rows[0]);
 });
