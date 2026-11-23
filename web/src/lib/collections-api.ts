@@ -1,3 +1,5 @@
+import type { SavedCollection } from '@/lib/types'; 
+
 const API_URL = process.env.API_URL; 
 
 export type Collection = {
@@ -49,4 +51,22 @@ export function addToCollection(token: string, collectionId: number, positionId:
     method: 'POST', 
     body: { positionId }, 
   });
+}
+
+export function listSavedCollections(token: string) {
+  return authedFetch<SavedCollection[]>(token, '/collections');
+}
+
+export function removeItem(token: string, collectionId: number, itemId: number) {
+  return authedFetch<null>(token, 
+    `/collections/${collectionId}/items/${itemId}`, {
+      method: 'DELETE',
+    }
+  ); 
+}
+
+export function deleteCollection(token: string, collectionId: number) {
+  return authedFetch<null>(token, `/collections/${collectionId}`, {
+    method: 'DELETE'
+  }); 
 }

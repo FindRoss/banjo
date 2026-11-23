@@ -12,18 +12,39 @@ router.get('/', async (req, res) => {
   
   const result = await pool.query(`
     SELECT c.id, c.name, c.created_at,
-        COALESCE(
-          json_agg(json_build_object('id', ci.id, 'positionId', ci.position_id) ORDER BY ci.sort_order)
-            FILTER (WHERE ci.id IS NOT NULL),
-          '[]'
-        ) AS items
+      COALESCE(
+        json_agg(
+          json_build_object(
+            'id', ci.id,
+            'positionId', p.id,
+            'baseFret', p.base_fret,
+            'frets', p.frets,
+            'fingers', p.fingers,
+            'chord', json_build_object(
+              'slug', ch.slug,
+              'root', ch.root,
+              'quality', ch.quality
+            ),
+            'tuning', json_build_object(
+              'instrument', t.instrument,
+              'slug', t.slug,
+              'name', t.name,
+              'openStrings', t.open_strings
+            )
+          ) ORDER BY ci.sort_order
+        ) FILTER (WHERE ci.id IS NOT NULL),
+        '[]'
+      ) AS items
       FROM collections c
       LEFT JOIN collection_items ci ON ci.collection_id = c.id
+      LEFT JOIN positions p ON p.id = ci.position_id
+      LEFT JOIN chords ch ON ch.id = p.chord_id
+      LEFT JOIN tunings t ON t.id = p.tuning_id
       WHERE c.user_id = $1
       GROUP BY c.id
-      ORDER BY c.created_at  
+      ORDER BY c.created_at
     `, [userId]
-    );
+  );
 
   res.json(result.rows);
   

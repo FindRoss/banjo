@@ -27,3 +27,25 @@ export interface Tuning {
   slug: string;
   openStrings: string[];
 }
+
+export interface CollectionItem {
+  id: number;
+  positionId: number;
+  baseFret: number;
+  frets: FretValue[];
+  fingers: number[] | null;
+  chord: { slug: string; root: Root; quality: Quality };
+  tuning: {
+    instrument: string;
+    slug: string;
+    name: string;
+    openStrings: string[];
+  };
+}
+
+export interface SavedCollection {
+  id: number;
+  name: string;
+  created_at: string;
+  items: CollectionItem[];
+}

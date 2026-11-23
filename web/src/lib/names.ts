@@ -12,6 +12,6 @@ const qualityEndings: Record<Quality, string> = {
   sixth: '6',
 };
 
-export function fullName(chord: Chord) {
+export function fullName(chord: Pick<Chord, 'root' | 'quality'>) {
   return chord.root + qualityEndings[chord.quality];
 }
