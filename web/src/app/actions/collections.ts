@@ -1,10 +1,13 @@
 'use server'; 
 
+import { refresh } from 'next/cache';
 import { getToken } from '@/lib/session'; 
 import {
   addToCollection,
   createCollection,
   listCollections,
+  deleteCollection,
+  removeItem,
   type Collection,
 } from '@/lib/collections-api'; 
 
@@ -51,4 +54,29 @@ export async function createCollectionAction(name: string): Promise<ActionResult
   if (!result.ok) return { ok: false, error: result.error }; 
 
   return { ok: true, data: result.data }; 
+}
+
+export async function removeItemAction(
+  collectionId: number,
+  itemId: number,
+): Promise<ActionResult> {
+  const token = await getToken();
+  if (!token) return { ok: false, error: 'Please log in' };
+
+  const result = await removeItem(token, collectionId, itemId);
+  if (!result.ok) return { ok: false, error: result.error };
+
+  refresh();
+  return { ok: true, data: null };
+}
+
+export async function deleteCollectionAction(collectionId: number): Promise<ActionResult> {
+  const token = await getToken();
+  if (!token) return { ok: false, error: 'Please log in' };
+
+  const result = await deleteCollection(token, collectionId);
+  if (!result.ok) return { ok: false, error: result.error };
+
+  refresh();
+  return { ok: true, data: null };
 }
